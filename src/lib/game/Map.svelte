@@ -127,9 +127,10 @@
             console.log(remainingFlags);
             dispatch("flag", remainingFlags + 1);
         } else {
-            if (remainingFlags === 1) {
+            if (remainingFlags === 0) {
+                return;
+            } else if (remainingFlags === 1) {
                 // If all non-bomb cells are revealed and there are no flags left, win the game
-
                 if (map.filter((cell) => cell.value !== -1 && !cell.revealed).length === 0) {
                     dispatch("status", "won");
                 }
